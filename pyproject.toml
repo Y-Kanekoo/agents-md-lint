@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agents-md-lint"
+version = "0.1.0"
+description = "AIエージェント向け指示書の静的検査"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+agents-md-lint = "agents_md_lint.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-cov>=6", "ruff>=0.9", "mypy>=1.14"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+addopts = "--cov=agents_md_lint --cov-report=term-missing --cov-fail-under=85"
+testpaths = ["tests"]
